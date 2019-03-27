@@ -1,0 +1,18 @@
+{
+  "name": "MAL_ext",
+  "description" : "MAL Integration Extension",
+  "version": "0.0.1",
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "manifest_version": 2,
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+M",
+        "mac": "MacCtrl+Alt+M"
+      },
+      "description": "Opens index.html"
+    }
+  }
+}
