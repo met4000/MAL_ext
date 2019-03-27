@@ -1,18 +1,24 @@
 {
   "name": "MAL_ext",
   "description" : "MAL Integration Extension",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "browser_action": {
     "default_popup": "index.html"
   },
   "manifest_version": 2,
   "commands": {
-    "_execute_browser_action": {
+    "keyword-search": {
       "suggested_key": {
-        "default": "Ctrl+Alt+M",
-        "mac": "MacCtrl+Alt+M"
+        "default": "Ctrl+Shift+S",
+        "mac": "MacCtrl+Shift+S"
       },
-      "description": "Opens index.html"
+      "description": "Opens MAL in a new tab searching for the selected keyword(s)"
     }
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.animelab.com/*"],
+      "js": ["contentScripts/animelab.js"]
+    }
+  ]
 }
