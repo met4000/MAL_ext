@@ -1,4 +1,11 @@
-console.log("Running MAL_ext animelab injection script...");
+console.raw = {};
+for (var t = ["log", "info", "warn", "error"], i = 0; i < t.length; i++) {
+  console.raw[t[i]] = console[t[i]];
+  console[t[i]] = new Function(`var args = []; for (var i in arguments) args.push(arguments[i]); console.raw.` + t[i] + `.apply(this, ["MAL_ext:"].concat(args));`);
+}
+
+
+console.log("Running animelab injection script...");
 
 function parseScore(score) {
   var internal = score.toString();
