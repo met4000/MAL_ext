@@ -21,5 +21,8 @@ if ((titleEl = document.querySelector("body > div.site-wrapper > div.show-info-w
 
 
 function modifyShow(i, show) {
-  seasons[i].querySelector("a").innerText += " - " + show.score;
+  var disp = document.createElement("div");
+  disp.innerHTML = `<span title="View on MAL"><a href="` + show.url + `" style="display: inline;" onclick="document.body.innerHTML='';window.location.href=this.href;">(` + show.score + `)</a></span>`;
+  disp = disp.firstChild;
+  seasons[i].querySelector("a").insertBefore(disp, seasons[i].querySelector("a > span.glyphicon.al-plus").nextSibling);
 }
