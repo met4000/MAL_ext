@@ -1,4 +1,4 @@
-console.log("Running animelab injection script...");
+console.log("Running animelab card injection script...");
 
 function parseScore(score) {
   var internal = score.toString();
@@ -19,12 +19,7 @@ for (var i = 0; i < cards.length; i++) {
   secondaryDetails[i] = cards[i].querySelector("div > div.card-wrapper > div.card-back-card > div");
   var title = details[i].querySelector("h4 > a").innerText;
 
-  fetch.byName(title, new Function(`
-    if (this.readyState == 4 && this.status == 200) {
-      var i = ` + i + `;
-      modifyCard(i, JSON.parse(this.responseText).results[0]);
-    }
-  `));
+  fetch.byName(title, new Function(`modifyCard(` + i + `, arguments[0]);`));
 }
 
 
