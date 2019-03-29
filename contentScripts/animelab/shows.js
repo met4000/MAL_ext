@@ -15,7 +15,7 @@ if ((titleEl = document.querySelector("body > div.site-wrapper > div.show-info-w
     // var s = /\s(\d+)/.exec(header.querySelector("a").innerText)[1]; // season number
     var query = titleEl.innerText + " " + header.querySelector("a").innerText;
     seasons.push(header);
-    fetch.byTitle(query, new Function(`modifyShow(` + (seasons.length - 1) + `, arguments[0]);`));
+    MAL.getByTitle(query, new Function(`modifyShow(` + (seasons.length - 1) + `, arguments[0]);`));
   }
 }
 
