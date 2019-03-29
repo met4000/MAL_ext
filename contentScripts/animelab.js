@@ -40,7 +40,7 @@ for (var i = 0; i < cards.length; i++) {
 
 function modifyCard(i, show) {
   var link = document.createElement("div");
-  link.innerHTML = '<a href="' + show.url + '" class="btn btn-watch-instantly btn-full-width" title="' + show.title + '"><span class="glyphicon"><img src="https://cdn.myanimelist.net/images/faviconv5.ico"></span>View on MAL</a>';
+  link.innerHTML = '<a href="' + show.url + '" class="btn btn-watch-instantly btn-full-width" title="View ' + show.title + ' on MAL"><span class="glyphicon"><img src="https://cdn.myanimelist.net/images/faviconv5.ico"></span>View on MAL</a>';
   link = link.firstChild;
   details[i].insertBefore(link, details[i].children[2]);
 
