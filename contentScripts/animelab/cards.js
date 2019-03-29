@@ -1,10 +1,3 @@
-console.raw = {};
-for (var t = ["log", "info", "warn", "error"], i = 0; i < t.length; i++) {
-  console.raw[t[i]] = console[t[i]];
-  console[t[i]] = new Function(`var args = []; for (var i in arguments) args.push(arguments[i]); console.raw.` + t[i] + `.apply(this, ["MAL_ext:"].concat(args));`);
-}
-
-
 console.log("Running animelab injection script...");
 
 function parseScore(score) {
@@ -26,15 +19,12 @@ for (var i = 0; i < cards.length; i++) {
   secondaryDetails[i] = cards[i].querySelector("div > div.card-wrapper > div.card-back-card > div");
   var title = details[i].querySelector("h4 > a").innerText;
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = new Function(`
+  fetch.byName(title, new Function(`
     if (this.readyState == 4 && this.status == 200) {
       var i = ` + i + `;
       modifyCard(i, JSON.parse(this.responseText).results[0]);
     }
-  `);
-  xhttp.open("GET", "https://api.jikan.moe/v3/search/anime?q=" + title);
-  xhttp.send();
+  `));
 }
 
 
@@ -50,6 +40,6 @@ function modifyCard(i, show) {
     score.innerHTML = '<h5 style="display: inline;">MAL Rating</h5><span style="float: right;">' + parseScore(show.score) + '</span>';
     secondaryDetails[i].insertBefore(score, secondaryDetails[i].children[2]);
   } else {
-    console.info("Unable to get card back for " + show.title + " (i = " + i + ") - Is it a premium episode card?");
+    console.info("Unable to get card back for " + show.title + " (i = " + i + ") - Is it an episode card?");
   }
 }
