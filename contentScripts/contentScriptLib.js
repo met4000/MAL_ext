@@ -10,7 +10,7 @@ for (var t = ["log", "info", "warn", "error"], i = 0; i < t.length; i++) {
 // Fetch funcs
 
 var fetch = {};
-fetch.byName = function (title, callback) {
+fetch.byTitle = function (title, callback) {
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = new Function(`

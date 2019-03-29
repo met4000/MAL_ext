@@ -19,7 +19,7 @@ for (var i = 0; i < cards.length; i++) {
   secondaryDetails[i] = cards[i].querySelector("div > div.card-wrapper > div.card-back-card > div");
   var title = details[i].querySelector("h4 > a").innerText;
 
-  fetch.byName(title, new Function(`modifyCard(` + i + `, arguments[0]);`));
+  fetch.byTitle(title, new Function(`modifyCard(` + i + `, arguments[0]);`));
 }
 
 
