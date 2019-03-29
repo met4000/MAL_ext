@@ -1,7 +1,7 @@
 {
   "name": "MAL_ext",
   "description" : "MAL Integration Extension",
-  "version": "0.1.6",
+  "version": "0.2.8",
   "browser_action": {
     "default_popup": "index.html"
   },
@@ -18,7 +18,23 @@
   "content_scripts": [
     {
       "matches": ["*://www.animelab.com/*"],
-      "js": ["contentScripts/animelab.js"]
+      "js": ["contentScripts/contentScriptLib.js"]
+    },
+    {
+      "matches": [
+        "*://www.animelab.com/",
+        "*://www.animelab.com/shows/*",
+        "*://www.animelab.com/simulcasts/*",
+        "*://www.animelab.com/genres/*"
+      ],
+      "js": ["contentScripts/animelab/cards.js"]
+    },
+    {
+      "matches": ["*://www.animelab.com/shows/*"],
+      "js": ["contentScripts/animelab/shows.js"]
     }
+  ],
+  "web_accessible_resources": [
+    "manifest.json"
   ]
 }
