@@ -36,7 +36,7 @@ if ((titleEl = document.querySelector("body > div.site-wrapper > div.show-info-w
     var seasonTitle = header.querySelector("a").innerText;
 
     var season = document.createElement("div");
-    season.innerHTML = `<a title="View on MAL"><p style="margin: 0 0 5px;">` + seasonTitle + `<span style="float: right;">(loading)</span></p></a>`;
+    season.innerHTML = `<a title="View on MAL"><p style="margin: 0 0 8px;"><span style="display: inline-block; width: 200px;">` + seasonTitle + `</span><span style="float: right;">~</span></p></a>`;
     season = season.firstChild;
 
     seasons.push(disp.appendChild(season));
@@ -55,5 +55,5 @@ if ((titleEl = document.querySelector("body > div.site-wrapper > div.show-info-w
 // }
 function modifyShow(i, show) {
   seasons[i].href = show.url;
-  seasons[i].querySelector("p > span").innerHTML = show.score;
+  seasons[i].querySelector("p > span:nth-child(2)").innerHTML = show.score;
 }
