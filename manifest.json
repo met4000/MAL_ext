@@ -1,7 +1,7 @@
 {
   "name": "MAL_ext",
   "description" : "MAL Integration Extension",
-  "version": "0.2.8",
+  "version": "0.2.12",
   "browser_action": {
     "default_popup": "index.html"
   },
