@@ -27,6 +27,8 @@ if ((titleEl = document.querySelector("body > div.site-wrapper > div.show-info-w
   document.querySelector("#user-controls-container > div").insertBefore(dispMAL, document.querySelector("#ratings-breakdown-container"));
   var disp = document.querySelector("#MAL-ratings-container > div");
 
+  var seasonTitles = [];
+
   for (var header, i = 1; (header = document.querySelector("#season-listing-accordian > h4:nth-child(" + i + ")")) != null; i += 2) {
     if ((i + 1) / 2 > 100) {
       console.error("Suspected Infinite Loop: Season eval terminated at >100 iterations");
@@ -40,9 +42,15 @@ if ((titleEl = document.querySelector("body > div.site-wrapper > div.show-info-w
     season = season.firstChild;
 
     seasons.push(disp.appendChild(season));
+    seasonTitles.push(seasonTitle);
+  }
 
-    var query = titleEl.innerText + " " + seasonTitle;
-    MAL.getByTitle(query, new Function(`modifyShow(` + (seasons.length - 1) + `, arguments[0]);`));
+  if (seasonTitles.length == 1) {
+    var query = titleEl.innerText;
+    MAL.getByTitle(query, new Function(`modifyShow(0, arguments[0]);`));
+  } else for (var i in seasonTitles) {
+    var query = titleEl.innerText + " " + seasonTitles[i];
+    MAL.getByTitle(query, new Function(`modifyShow(` + i + `, arguments[0]);`));
   }
 }
 
