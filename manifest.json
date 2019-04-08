@@ -17,9 +17,13 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://www.animelab.com/*"],
+      "matches": [
+        "*://www.animelab.com/*",
+        "*://www.crunchyroll.com/*"
+      ],
       "js": ["contentScripts/contentScriptLib.js"]
     },
+
     {
       "matches": [
         "*://www.animelab.com/",
@@ -32,6 +36,14 @@
     {
       "matches": ["*://www.animelab.com/shows/*"],
       "js": ["contentScripts/animelab/shows.js"]
+    },
+
+    {
+      "matches": [
+        "*://www.crunchyroll.com/*/videos/anime",
+        "*://www.crunchyroll.com/*/videos/anime/*"
+      ],
+      "js": ["contentScripts/crunchyroll/portraits.js"]
     }
   ],
   "web_accessible_resources": [
