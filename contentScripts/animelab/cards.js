@@ -1,15 +1,5 @@
 console.log("Running animelab card injection script...");
 
-function parseScore(score) {
-  var internal = score.toString();
-  if (internal == "10") return "10.0";
-
-  if (internal.length == 1) internal += ".";
-  while (internal.length < 4) internal += "0";
-
-  return internal;
-}
-
 
 var cards = document.getElementsByClassName("card-content");
 var details = [], secondaryDetails = [];

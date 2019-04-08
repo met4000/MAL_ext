@@ -44,5 +44,5 @@ if ((titleEl = document.querySelector("body > div.site-wrapper > div.show-info-w
 
 function modifyShow(i, show) {
   seasons[i].href = show.url;
-  seasons[i].querySelector("p > span:nth-child(2)").innerHTML = show.score;
+  seasons[i].querySelector("p > span:nth-child(2)").innerHTML = parseScore(show.score);
 }
